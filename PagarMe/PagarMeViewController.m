@@ -7,6 +7,7 @@
 //
 
 #import "PagarMeViewController.h"
+#import "PagarMe.h"
 
 @interface PagarMeViewController ()
 
@@ -18,6 +19,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+	
+	// Sets your encryption key
+	[[PagarMe sharedInstance] setEncryptionKey:@"<your encryption key>"];
+
+	PagarMeCreditCard *creditCard = [[PagarMeCreditCard alloc] init];
+	creditCard.cardNumber = @"4901720080344448";
+	creditCard.cardHolderName = @"Test User";
+	creditCard.cardExpiracyMonth = 12;
+	creditCard.cardExpiracyYear = 13;
+	creditCard.cardCvv = @"315";
+
+	NSLog(@"creditCard: %@", creditCard);
 }
 
 - (void)didReceiveMemoryWarning

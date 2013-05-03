@@ -23,6 +23,8 @@
 		DDE5F4E817343D4F0071321C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE5F4C317343D4E0071321C /* Foundation.framework */; };
 		DDE5F4F017343D4F0071321C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDE5F4EE17343D4F0071321C /* InfoPlist.strings */; };
 		DDE5F4F317343D4F0071321C /* PagarMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F4F217343D4F0071321C /* PagarMeTests.m */; };
+		DDE5F4FF173442760071321C /* PagarMe.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F4FE173442760071321C /* PagarMe.m */; };
+		DDE5F5021734456C0071321C /* PagarMeCreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F5011734456C0071321C /* PagarMeCreditCard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,10 @@
 		DDE5F4EF17343D4F0071321C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DDE5F4F117343D4F0071321C /* PagarMeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagarMeTests.h; sourceTree = "<group>"; };
 		DDE5F4F217343D4F0071321C /* PagarMeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagarMeTests.m; sourceTree = "<group>"; };
+		DDE5F4FD173442760071321C /* PagarMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagarMe.h; sourceTree = "<group>"; };
+		DDE5F4FE173442760071321C /* PagarMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagarMe.m; sourceTree = "<group>"; };
+		DDE5F5001734456C0071321C /* PagarMeCreditCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagarMeCreditCard.h; sourceTree = "<group>"; };
+		DDE5F5011734456C0071321C /* PagarMeCreditCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagarMeCreditCard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +93,8 @@
 		DDE5F4B517343D4E0071321C = {
 			isa = PBXGroup;
 			children = (
-				DDE5F4C717343D4F0071321C /* PagarMe */,
+				DDE5F4C717343D4F0071321C /* PagarMe Sample */,
+				DDE5F4FC1734425F0071321C /* PagarMe API */,
 				DDE5F4EB17343D4F0071321C /* PagarMeTests */,
 				DDE5F4C017343D4E0071321C /* Frameworks */,
 				DDE5F4BF17343D4E0071321C /* Products */,
@@ -114,7 +121,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DDE5F4C717343D4F0071321C /* PagarMe */ = {
+		DDE5F4C717343D4F0071321C /* PagarMe Sample */ = {
 			isa = PBXGroup;
 			children = (
 				DDE5F4D017343D4F0071321C /* PagarMeAppDelegate.h */,
@@ -124,6 +131,7 @@
 				DDE5F4DC17343D4F0071321C /* PagarMeViewController.xib */,
 				DDE5F4C817343D4F0071321C /* Supporting Files */,
 			);
+			name = "PagarMe Sample";
 			path = PagarMe;
 			sourceTree = "<group>";
 		};
@@ -158,6 +166,17 @@
 				DDE5F4EE17343D4F0071321C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DDE5F4FC1734425F0071321C /* PagarMe API */ = {
+			isa = PBXGroup;
+			children = (
+				DDE5F4FD173442760071321C /* PagarMe.h */,
+				DDE5F4FE173442760071321C /* PagarMe.m */,
+				DDE5F5001734456C0071321C /* PagarMeCreditCard.h */,
+				DDE5F5011734456C0071321C /* PagarMeCreditCard.m */,
+			);
+			name = "PagarMe API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +293,8 @@
 				DDE5F4CE17343D4F0071321C /* main.m in Sources */,
 				DDE5F4D217343D4F0071321C /* PagarMeAppDelegate.m in Sources */,
 				DDE5F4DB17343D4F0071321C /* PagarMeViewController.m in Sources */,
+				DDE5F4FF173442760071321C /* PagarMe.m in Sources */,
+				DDE5F5021734456C0071321C /* PagarMeCreditCard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +475,7 @@
 				DDE5F4F817343D4F0071321C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DDE5F4F917343D4F0071321C /* Build configuration list for PBXNativeTarget "PagarMeTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +484,7 @@
 				DDE5F4FB17343D4F0071321C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
