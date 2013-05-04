@@ -21,5 +21,6 @@ cardExpiracyYear:(int)_cardExpiracyYear cardCvv:(int)_cardCvv;
 @property (assign) int cardExpiracyMonth;
 @property (assign) int cardExpiracyYear;
 @property (retain) NSString *cardCvv;
+@property (copy) void (^callbackBlock)(NSError *error, NSString *cardHash);
 
 @end

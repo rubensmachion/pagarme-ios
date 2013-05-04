@@ -8,8 +8,6 @@
 
 #import "PagarMe.h"
 
-#define API_ENDPOINT @"https://0.0.0.0:3001/1"
-
 @implementation PagarMe
 
 @synthesize encryptionKey, liveMode;

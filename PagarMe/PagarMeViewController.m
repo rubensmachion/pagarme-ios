@@ -21,7 +21,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
 	
 	// Sets your encryption key
-	[[PagarMe sharedInstance] setEncryptionKey:@"asdasd"];
+	[[PagarMe sharedInstance] setEncryptionKey:@"9741a03ea3a4f15f6fa8d9fe9d2c47c8"];
 
 	PagarMeCreditCard *creditCard = [[PagarMeCreditCard alloc] init];
 	creditCard.cardNumber = @"4901720080344448";
@@ -34,6 +34,7 @@
 
 	[creditCard generateHash:^(NSError *error, NSString *cardHash) {
 		NSLog(@"GOT CARD HASH: %@", cardHash);
+		NSLog(@"ERROR? %@", error);
 	}];
 }
 

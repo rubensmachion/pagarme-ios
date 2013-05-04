@@ -25,6 +25,7 @@ cardExpiracyMonth:(int)_cardExpiracyMonth cardExpiracyYear:(int)_cardExpiracyYea
 }
 
 - (void)generateHash:(void (^)(NSError *error, NSString *cardHash))block {
+	self.callbackBlock = block;
 	NSString *urlString = [NSString stringWithFormat:@"%@/transactions/card_hash_key?encryption_key=%@", API_ENDPOINT, [[PagarMe sharedInstance] encryptionKey]];
 	urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]; 
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
@@ -33,6 +34,20 @@ cardExpiracyMonth:(int)_cardExpiracyMonth cardExpiracyYear:(int)_cardExpiracyYea
 	NSLog(@"urlString: %@", urlString);
 
 	NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+- (void)parseResponse:(NSDictionary *)responseDict {
+	NSLog(@"response dict: %@", responseDict);
+
+	// Server returned error...
+	if([responseDict objectForKey:@"error"]) {
+		NSError *error = [NSError errorWithDomain:[responseDict objectForKey:@"error"] code:-1 userInfo:nil];
+		self.callbackBlock(error, nil);
+		return;
+	}
+}
+
+- (void)parseCardHashResponse:(id)response {
 }
 
 #pragma mark NSURLConnection delegate methods
@@ -51,16 +66,23 @@ cardExpiracyMonth:(int)_cardExpiracyMonth cardExpiracyYear:(int)_cardExpiracyYea
 }
  
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    // The request is complete and data has been received
-    // You can parse the stuff in your instance variable now
-	NSString *response = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	NSLog(@"response string: %@", response);
+	NSError *error = nil;
+	id responseObject = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
+
+	if(error) {
+		NSLog(@"error: %@", error);
+		self.callbackBlock(error, nil);
+		return;
+	}
+
+	[self parseResponse:(NSDictionary *)responseObject];
 }
  
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     // The request has failed for some reason!
     // Check the error var
 	NSLog(@" error: %@", error);
+	self.callbackBlock(error, nil);
 }
 
 @end
