@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "PagarMeCreditCard.h"
 
+#define API_ENDPOINT @"https://0.0.0.0:3001/1"
+
 @interface PagarMe : NSObject
 
 @property (retain) NSString *encryptionKey;
+@property (assign) BOOL liveMode;
 
 + (PagarMe *)sharedInstance;
 
