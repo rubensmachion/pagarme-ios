@@ -30,8 +30,6 @@
 	creditCard.cardExpiracyYear = 13;
 	creditCard.cardCvv = @"315";
 
-	NSLog(@"creditCard: %@", creditCard);
-
 	[creditCard generateHash:^(NSError *error, NSString *cardHash) {
 		NSLog(@"GOT CARD HASH: %@", cardHash);
 		NSLog(@"ERROR? %@", error);

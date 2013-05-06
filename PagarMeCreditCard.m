@@ -37,140 +37,15 @@ cardExpiracyMonth:(int)_cardExpiracyMonth cardExpiracyYear:(int)_cardExpiracyYea
 	NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
-- (NSData *)stripPublicKeyHeader:(NSData *)d_key
-{
-    // Skip ASN.1 public key header
-    if (d_key == nil) return(nil);
+- (NSString *)cardHashString {
+	NSMutableArray *parameters = [[NSMutableArray alloc] init];
 
-    unsigned int len = [d_key length];
-    if (!len) return(nil);
+	[parameters addObject:[NSString stringWithFormat:@"card_number=%@", self.cardNumber]];
+	[parameters addObject:[NSString stringWithFormat:@"card_holder_name=%@", self.cardHolderName]];
+	[parameters addObject:[NSString stringWithFormat:@"card_expiracy_date=%02i%02i", self.cardExpiracyMonth, self.cardExpiracyYear]];
+	[parameters addObject:[NSString stringWithFormat:@"card_cvv=%@", self.cardCvv]];
 
-    unsigned char *c_key = (unsigned char *)[d_key bytes];
-    unsigned int  idx    = 0;
-
-    if (c_key[idx++] != 0x30) return(nil);
-
-    if (c_key[idx] > 0x80) idx += c_key[idx] - 0x80 + 1;
-    else idx++;
-
-    // PKCS #1 rsaEncryption szOID_RSA_RSA
-    static unsigned char seqiod[] =
-    { 0x30,   0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x01,
-     0x01, 0x05, 0x00 };
-    if (memcmp(&c_key[idx], seqiod, 15)) return(nil);
-
-    idx += 15;
-
-    if (c_key[idx++] != 0x03) return(nil);
-
-    if (c_key[idx] > 0x80) idx += c_key[idx] - 0x80 + 1;
-    else idx++;
-
-    if (c_key[idx++] != '\0') return(nil);
-
-    // Now make a new NSData from this buffer
-    return([NSData dataWithBytes:&c_key[idx] length:len - idx]);
-}
-
-- (SecKeyRef)parsePublicKey:(NSString *)key
-{
-    NSString *s_key = [NSString string];
-    NSArray  *a_key = [key componentsSeparatedByString:@"\n"];
-    BOOL     f_key  = FALSE;
-
-    for (NSString *a_line in a_key) {
-        if ([a_line isEqualToString:@"-----BEGIN PUBLIC KEY-----"]) {
-            f_key = TRUE;
-        }
-        else if ([a_line isEqualToString:@"-----END PUBLIC KEY-----"]) {
-            f_key = FALSE;
-        }
-        else if (f_key) {
-            s_key = [s_key stringByAppendingString:a_line];
-        }
-    }
-    if (s_key.length == 0) return(nil);
-
-    // This will be base64 encoded, decode it.
-    NSData *d_key = [NSData dataFromBase64String:s_key];
-    d_key = [self stripPublicKeyHeader:d_key];
-    if (d_key == nil) return(nil);
-
-    // Delete any old lingering key with the same tag
-    NSMutableDictionary *publicKey = [[NSMutableDictionary alloc] init];
-    [publicKey setObject:(__bridge id) kSecClassKey forKey:(__bridge id)kSecClass];
-    [publicKey setObject:(__bridge id) kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];
-    [publicKey setObject:@"tag" forKey:(__bridge id)kSecAttrApplicationTag];
-    SecItemDelete((__bridge CFDictionaryRef)publicKey);
-
-    CFTypeRef persistKey = nil;
-
-    // Add persistent version of the key to system keychain
-    [publicKey setObject:d_key forKey:(__bridge id)kSecValueData];
-    [publicKey setObject:(__bridge id) kSecAttrKeyClassPublic forKey:(__bridge id)
-     kSecAttrKeyClass];
-    [publicKey setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)
-     kSecReturnPersistentRef];
-
-    OSStatus secStatus = SecItemAdd((__bridge CFDictionaryRef)publicKey, &persistKey);
-    if (persistKey != nil) CFRelease(persistKey);
-
-    if ((secStatus != noErr) && (secStatus != errSecDuplicateItem)) {
-        return(nil);
-    }
-
-    // Now fetch the SecKeyRef version of the key
-    SecKeyRef keyRef = nil;
-
-    [publicKey removeObjectForKey:(__bridge id)kSecValueData];
-    [publicKey removeObjectForKey:(__bridge id)kSecReturnPersistentRef];
-    [publicKey setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)kSecReturnRef];
-    [publicKey setObject:(__bridge id) kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];
-    secStatus = SecItemCopyMatching((__bridge CFDictionaryRef)publicKey,
-                                    (CFTypeRef *)&keyRef);
-
-	return keyRef;
-
-    /* if (keyRef == nil) return(FALSE); */
-
-    /* // Add to our pseudo keychain */
-    /* [keyRefs addObject:[NSValue valueWithBytes:&keyRef objCType:@encode( */
-    /*                         SecKeyRef)]]; */
-}
-
-- (NSString *)rsaEncrypt:(NSString *)string withKey:(NSString *)publicKeyString {
-	NSData *inputData = [string dataUsingEncoding:NSUTF8StringEncoding];
-	const void *bytes = [inputData bytes];
-	int length = [inputData length];
-	uint8_t *plainText = malloc(length);
-	memcpy(plainText, bytes, length);
-
-	NSLog(@"publicKeyString: %@", publicKeyString);
-
-	SecKeyRef publicKey = [self parsePublicKey:publicKeyString];
-	NSLog(@"publicKey: %i", publicKey);
-
-	/* allocate a buffer to hold the cipher text */
-	size_t cipherBufferSize;
-	uint8_t *cipherBuffer; 
-	cipherBufferSize = SecKeyGetBlockSize(publicKey);
-	cipherBuffer = malloc(cipherBufferSize);
-
-	/* encrypt!! */
-	SecKeyEncrypt(publicKey, kSecPaddingPKCS1, plainText, length, cipherBuffer, &cipherBufferSize);
-
-
-	NSData *finalData = [NSData dataWithBytes:cipherBuffer length:cipherBufferSize];
-
-	NSLog(@"finalData: %@", finalData);
-
-	/* Free the Security Framework Five! */
-	free(cipherBuffer);
-
-	/* And this guy if you used #2 above (got your plain text from an NSString) */
-	free(plainText);
-
-	return [finalData base64EncodedStringWithSeparateLines:NO];
+	return [parameters componentsJoinedByString:@"&"];
 }
 
 #pragma mark NSURLConnection delegate methods
@@ -192,18 +67,142 @@ cardExpiracyMonth:(int)_cardExpiracyMonth cardExpiracyYear:(int)_cardExpiracyYea
 	NSError *error = nil;
 	id responseObject = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
 
-	NSLog(@"id: %@", [responseObject objectForKey:@"id"]);
-
 	if(error) {
 		self.callbackBlock(error, nil);
 		return;
 	}
 
-	NSLog(@"rsaEncrypt: %@", [self rsaEncrypt:@"card_number=121212121212&card_holder_name=asd&card_expiracy_date=1213&card_cvv=123" withKey:[responseObject objectForKey:@"public_key"]]);
+	NSString *encryptedString = nil;
+
+	@try {
+		encryptedString = [self rsaEncrypt:[self cardHashString] withKey:[responseObject objectForKey:@"public_key"]];
+	} @catch (NSException *e) {
+		self.callbackBlock(error, nil);
+		return;
+	}
+
+	self.callbackBlock(nil, [NSString stringWithFormat:@"%@_%@", [responseObject objectForKey:@"id"], encryptedString]);
 }
  
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	self.callbackBlock(error, nil);
+}
+
+#pragma mark PEM -> DER helpers
+
+- (NSData *)stripPublicKeyHeader:(NSData *)keyData
+{
+    if (keyData == nil) return(nil);
+
+    unsigned int len = [keyData length];
+    if (!len) return(nil);
+
+    unsigned char *c_key = (unsigned char *)[keyData bytes];
+    unsigned int  idx    = 0;
+
+    if (c_key[idx++] != 0x30) return(nil);
+
+    if (c_key[idx] > 0x80) idx += c_key[idx] - 0x80 + 1;
+    else idx++;
+
+    static unsigned char seqiod[] =
+    { 0x30,   0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x01,
+     0x01, 0x05, 0x00 };
+    if (memcmp(&c_key[idx], seqiod, 15)) return(nil);
+
+    idx += 15;
+
+    if (c_key[idx++] != 0x03) return(nil);
+
+    if (c_key[idx] > 0x80) idx += c_key[idx] - 0x80 + 1;
+    else idx++;
+
+    if (c_key[idx++] != '\0') return(nil);
+
+    return([NSData dataWithBytes:&c_key[idx] length:len - idx]);
+}
+
+- (SecKeyRef)parsePublicKey:(NSString *)key
+{
+	NSString *keyString = [NSString string];
+	NSArray  *keyArray = [key componentsSeparatedByString:@"\n"];
+	BOOL parsingKey = NO;
+
+	for (NSString *a_line in keyArray) {
+		if ([a_line isEqualToString:@"-----BEGIN PUBLIC KEY-----"]) {
+			parsingKey = TRUE;
+		}
+		else if ([a_line isEqualToString:@"-----END PUBLIC KEY-----"]) {
+			parsingKey = FALSE;
+		}
+		else if (parsingKey) {
+			keyString = [keyString stringByAppendingString:a_line];
+		}
+	}
+
+	if(keyString.length == 0) return(nil);
+
+	NSData *keyData = [NSData dataFromBase64String:keyString];
+	keyData = [self stripPublicKeyHeader:keyData];
+	if (keyData == nil) return(nil);
+
+	// Delete any old lingering key with the same tag
+	NSMutableDictionary *publicKey = [[NSMutableDictionary alloc] init];
+	[publicKey setObject:(__bridge id) kSecClassKey forKey:(__bridge id)kSecClass];
+	[publicKey setObject:(__bridge id) kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];
+	[publicKey setObject:@"tag" forKey:(__bridge id)kSecAttrApplicationTag];
+	SecItemDelete((__bridge CFDictionaryRef)publicKey);
+
+	CFTypeRef persistKey = nil;
+
+	// Add persistent version of the key to system keychain
+	[publicKey setObject:keyData forKey:(__bridge id)kSecValueData];
+	[publicKey setObject:(__bridge id) kSecAttrKeyClassPublic forKey:(__bridge id)kSecAttrKeyClass];
+	[publicKey setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)kSecReturnPersistentRef];
+
+	OSStatus secStatus = SecItemAdd((__bridge CFDictionaryRef)publicKey, &persistKey);
+	if (persistKey != nil) CFRelease(persistKey);
+
+	if ((secStatus != noErr) && (secStatus != errSecDuplicateItem)) {
+		return(nil);
+	}
+
+	SecKeyRef keyRef = nil;
+
+	[publicKey removeObjectForKey:(__bridge id)kSecValueData];
+	[publicKey removeObjectForKey:(__bridge id)kSecReturnPersistentRef];
+	[publicKey setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)kSecReturnRef];
+	[publicKey setObject:(__bridge id) kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];
+	secStatus = SecItemCopyMatching((__bridge CFDictionaryRef)publicKey, (CFTypeRef *)&keyRef);
+
+	return keyRef;
+}
+
+- (NSString *)rsaEncrypt:(NSString *)string withKey:(NSString *)publicKeyString {
+	// Convert input string to a C array of bytes
+	NSData *inputData = [string dataUsingEncoding:NSUTF8StringEncoding];
+	const void *bytes = [inputData bytes];
+	int length = [inputData length];
+	uint8_t *plainText = malloc(length);
+	memcpy(plainText, bytes, length);
+
+	SecKeyRef publicKey = [self parsePublicKey:publicKeyString];
+
+	// Allocate a buffer to hold the cipher text
+	size_t cipherBufferSize;
+	uint8_t *cipherBuffer; 
+	cipherBufferSize = SecKeyGetBlockSize(publicKey);
+	cipherBuffer = malloc(cipherBufferSize);
+
+	SecKeyEncrypt(publicKey, kSecPaddingPKCS1, plainText, length, cipherBuffer, &cipherBufferSize);
+
+	NSData *finalData = [NSData dataWithBytes:cipherBuffer length:cipherBufferSize];
+
+	// Free used C buffers
+	free(cipherBuffer);
+	free(plainText);
+
+	return [finalData base64EncodedStringWithSeparateLines:NO];
 }
 
 @end
