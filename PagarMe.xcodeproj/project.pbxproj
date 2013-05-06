@@ -25,6 +25,9 @@
 		DDE5F4F317343D4F0071321C /* PagarMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F4F217343D4F0071321C /* PagarMeTests.m */; };
 		DDE5F4FF173442760071321C /* PagarMe.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F4FE173442760071321C /* PagarMe.m */; };
 		DDE5F5021734456C0071321C /* PagarMeCreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F5011734456C0071321C /* PagarMeCreditCard.m */; };
+		DDE5F5041735977F0071321C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE5F5031735977F0071321C /* Security.framework */; };
+		DDE5F50717361C9E0071321C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F50617361C9E0071321C /* NSData+Base64.m */; };
+		DDE5F50817361F230071321C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F50617361C9E0071321C /* NSData+Base64.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,9 @@
 		DDE5F4FE173442760071321C /* PagarMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagarMe.m; sourceTree = "<group>"; };
 		DDE5F5001734456C0071321C /* PagarMeCreditCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagarMeCreditCard.h; sourceTree = "<group>"; };
 		DDE5F5011734456C0071321C /* PagarMeCreditCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagarMeCreditCard.m; sourceTree = "<group>"; };
+		DDE5F5031735977F0071321C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DDE5F50517361C9E0071321C /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		DDE5F50617361C9E0071321C /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDE5F5041735977F0071321C /* Security.framework in Frameworks */,
 				DDE5F4C217343D4E0071321C /* UIKit.framework in Frameworks */,
 				DDE5F4C417343D4E0071321C /* Foundation.framework in Frameworks */,
 				DDE5F4C617343D4F0071321C /* CoreGraphics.framework in Frameworks */,
@@ -93,6 +100,7 @@
 		DDE5F4B517343D4E0071321C = {
 			isa = PBXGroup;
 			children = (
+				DDE5F5031735977F0071321C /* Security.framework */,
 				DDE5F4C717343D4F0071321C /* PagarMe Sample */,
 				DDE5F4FC1734425F0071321C /* PagarMe API */,
 				DDE5F4EB17343D4F0071321C /* PagarMeTests */,
@@ -171,6 +179,8 @@
 		DDE5F4FC1734425F0071321C /* PagarMe API */ = {
 			isa = PBXGroup;
 			children = (
+				DDE5F50517361C9E0071321C /* NSData+Base64.h */,
+				DDE5F50617361C9E0071321C /* NSData+Base64.m */,
 				DDE5F4FD173442760071321C /* PagarMe.h */,
 				DDE5F4FE173442760071321C /* PagarMe.m */,
 				DDE5F5001734456C0071321C /* PagarMeCreditCard.h */,
@@ -290,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDE5F50817361F230071321C /* NSData+Base64.m in Sources */,
 				DDE5F4CE17343D4F0071321C /* main.m in Sources */,
 				DDE5F4D217343D4F0071321C /* PagarMeAppDelegate.m in Sources */,
 				DDE5F4DB17343D4F0071321C /* PagarMeViewController.m in Sources */,
@@ -303,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDE5F4F317343D4F0071321C /* PagarMeTests.m in Sources */,
+				DDE5F50717361C9E0071321C /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

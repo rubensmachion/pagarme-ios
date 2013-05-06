@@ -28,4 +28,10 @@ static PagarMe *sharedInstance = nil;
     return sharedInstance;
 }
 
+- (id)init {
+	self.liveMode = YES;
+
+	return self;
+}
+
 @end
