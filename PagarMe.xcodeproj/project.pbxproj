@@ -7,27 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DDDDD6A217387E08003B9755 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDDDD69C17387E08003B9755 /* Default-568h@2x.png */; };
+		DDDDD6A317387E08003B9755 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DDDDD69D17387E08003B9755 /* Default.png */; };
+		DDDDD6A417387E08003B9755 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDDDD69E17387E08003B9755 /* Default@2x.png */; };
+		DDDDD6A517387E08003B9755 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDDD69F17387E08003B9755 /* main.m */; };
+		DDDDD6AB17387E22003B9755 /* PagarMeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDDD6A817387E22003B9755 /* PagarMeAppDelegate.m */; };
+		DDDDD6AC17387E22003B9755 /* PagarMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDDD6AA17387E22003B9755 /* PagarMeViewController.m */; };
+		DDDDD6AD17387E34003B9755 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDDD69F17387E08003B9755 /* main.m */; };
+		DDDDD6B417387E43003B9755 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDDD6AF17387E43003B9755 /* NSData+Base64.m */; };
+		DDDDD6B517387E43003B9755 /* PagarMe.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDDD6B117387E43003B9755 /* PagarMe.m */; };
+		DDDDD6B617387E43003B9755 /* PagarMeCreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDDD6B317387E43003B9755 /* PagarMeCreditCard.m */; };
+		DDDDD6B717387E62003B9755 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDDDD69C17387E08003B9755 /* Default-568h@2x.png */; };
+		DDDDD6BA17387EA8003B9755 /* PagarMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDDDD6B817387EA8003B9755 /* PagarMeViewController.xib */; };
+		DDDDD6BC17387EB8003B9755 /* PagarMe-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDDDD6BB17387EB8003B9755 /* PagarMe-Info.plist */; };
 		DDE5F4C217343D4E0071321C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE5F4C117343D4E0071321C /* UIKit.framework */; };
 		DDE5F4C417343D4E0071321C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE5F4C317343D4E0071321C /* Foundation.framework */; };
 		DDE5F4C617343D4F0071321C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE5F4C517343D4E0071321C /* CoreGraphics.framework */; };
-		DDE5F4CC17343D4F0071321C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDE5F4CA17343D4F0071321C /* InfoPlist.strings */; };
-		DDE5F4CE17343D4F0071321C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F4CD17343D4F0071321C /* main.m */; };
-		DDE5F4D217343D4F0071321C /* PagarMeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F4D117343D4F0071321C /* PagarMeAppDelegate.m */; };
-		DDE5F4D417343D4F0071321C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DDE5F4D317343D4F0071321C /* Default.png */; };
-		DDE5F4D617343D4F0071321C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDE5F4D517343D4F0071321C /* Default@2x.png */; };
-		DDE5F4D817343D4F0071321C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDE5F4D717343D4F0071321C /* Default-568h@2x.png */; };
-		DDE5F4DB17343D4F0071321C /* PagarMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F4DA17343D4F0071321C /* PagarMeViewController.m */; };
-		DDE5F4DE17343D4F0071321C /* PagarMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE5F4DC17343D4F0071321C /* PagarMeViewController.xib */; };
 		DDE5F4E617343D4F0071321C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE5F4E517343D4F0071321C /* SenTestingKit.framework */; };
 		DDE5F4E717343D4F0071321C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE5F4C117343D4E0071321C /* UIKit.framework */; };
 		DDE5F4E817343D4F0071321C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE5F4C317343D4E0071321C /* Foundation.framework */; };
 		DDE5F4F017343D4F0071321C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDE5F4EE17343D4F0071321C /* InfoPlist.strings */; };
 		DDE5F4F317343D4F0071321C /* PagarMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F4F217343D4F0071321C /* PagarMeTests.m */; };
-		DDE5F4FF173442760071321C /* PagarMe.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F4FE173442760071321C /* PagarMe.m */; };
-		DDE5F5021734456C0071321C /* PagarMeCreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F5011734456C0071321C /* PagarMeCreditCard.m */; };
 		DDE5F5041735977F0071321C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE5F5031735977F0071321C /* Security.framework */; };
-		DDE5F50717361C9E0071321C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F50617361C9E0071321C /* NSData+Base64.m */; };
-		DDE5F50817361F230071321C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE5F50617361C9E0071321C /* NSData+Base64.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,35 +42,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DDDDD69C17387E08003B9755 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "PagarMeSample/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		DDDDD69D17387E08003B9755 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = PagarMeSample/Default.png; sourceTree = SOURCE_ROOT; };
+		DDDDD69E17387E08003B9755 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "PagarMeSample/Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		DDDDD69F17387E08003B9755 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PagarMeSample/main.m; sourceTree = SOURCE_ROOT; };
+		DDDDD6A117387E08003B9755 /* PagarMe-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PagarMe-Prefix.pch"; path = "PagarMeSample/PagarMe-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		DDDDD6A717387E22003B9755 /* PagarMeAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PagarMeAppDelegate.h; path = PagarMeSample/PagarMeAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		DDDDD6A817387E22003B9755 /* PagarMeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PagarMeAppDelegate.m; path = PagarMeSample/PagarMeAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		DDDDD6A917387E22003B9755 /* PagarMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PagarMeViewController.h; path = PagarMeSample/PagarMeViewController.h; sourceTree = SOURCE_ROOT; };
+		DDDDD6AA17387E22003B9755 /* PagarMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PagarMeViewController.m; path = PagarMeSample/PagarMeViewController.m; sourceTree = SOURCE_ROOT; };
+		DDDDD6AE17387E43003B9755 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "PagarMeAPI/NSData+Base64.h"; sourceTree = "<group>"; };
+		DDDDD6AF17387E43003B9755 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "PagarMeAPI/NSData+Base64.m"; sourceTree = "<group>"; };
+		DDDDD6B017387E43003B9755 /* PagarMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PagarMe.h; path = PagarMeAPI/PagarMe.h; sourceTree = "<group>"; };
+		DDDDD6B117387E43003B9755 /* PagarMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PagarMe.m; path = PagarMeAPI/PagarMe.m; sourceTree = "<group>"; };
+		DDDDD6B217387E43003B9755 /* PagarMeCreditCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PagarMeCreditCard.h; path = PagarMeAPI/PagarMeCreditCard.h; sourceTree = "<group>"; };
+		DDDDD6B317387E43003B9755 /* PagarMeCreditCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PagarMeCreditCard.m; path = PagarMeAPI/PagarMeCreditCard.m; sourceTree = "<group>"; };
+		DDDDD6B917387EA8003B9755 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = PagarMeSample/en.lproj/PagarMeViewController.xib; sourceTree = SOURCE_ROOT; };
+		DDDDD6BB17387EB8003B9755 /* PagarMe-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PagarMe-Info.plist"; path = "PagarMeSample/PagarMe-Info.plist"; sourceTree = SOURCE_ROOT; };
 		DDE5F4BE17343D4E0071321C /* PagarMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagarMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE5F4C117343D4E0071321C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DDE5F4C317343D4E0071321C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DDE5F4C517343D4E0071321C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		DDE5F4C917343D4F0071321C /* PagarMe-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PagarMe-Info.plist"; sourceTree = "<group>"; };
-		DDE5F4CB17343D4F0071321C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DDE5F4CD17343D4F0071321C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DDE5F4CF17343D4F0071321C /* PagarMe-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PagarMe-Prefix.pch"; sourceTree = "<group>"; };
-		DDE5F4D017343D4F0071321C /* PagarMeAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagarMeAppDelegate.h; sourceTree = "<group>"; };
-		DDE5F4D117343D4F0071321C /* PagarMeAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagarMeAppDelegate.m; sourceTree = "<group>"; };
-		DDE5F4D317343D4F0071321C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		DDE5F4D517343D4F0071321C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		DDE5F4D717343D4F0071321C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		DDE5F4D917343D4F0071321C /* PagarMeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagarMeViewController.h; sourceTree = "<group>"; };
-		DDE5F4DA17343D4F0071321C /* PagarMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagarMeViewController.m; sourceTree = "<group>"; };
-		DDE5F4DD17343D4F0071321C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PagarMeViewController.xib; sourceTree = "<group>"; };
 		DDE5F4E417343D4F0071321C /* PagarMeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagarMeTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE5F4E517343D4F0071321C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		DDE5F4ED17343D4F0071321C /* PagarMeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PagarMeTests-Info.plist"; sourceTree = "<group>"; };
 		DDE5F4EF17343D4F0071321C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DDE5F4F117343D4F0071321C /* PagarMeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagarMeTests.h; sourceTree = "<group>"; };
 		DDE5F4F217343D4F0071321C /* PagarMeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagarMeTests.m; sourceTree = "<group>"; };
-		DDE5F4FD173442760071321C /* PagarMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagarMe.h; sourceTree = "<group>"; };
-		DDE5F4FE173442760071321C /* PagarMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagarMe.m; sourceTree = "<group>"; };
-		DDE5F5001734456C0071321C /* PagarMeCreditCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagarMeCreditCard.h; sourceTree = "<group>"; };
-		DDE5F5011734456C0071321C /* PagarMeCreditCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagarMeCreditCard.m; sourceTree = "<group>"; };
 		DDE5F5031735977F0071321C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		DDE5F50517361C9E0071321C /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
-		DDE5F50617361C9E0071321C /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,11 +132,11 @@
 		DDE5F4C717343D4F0071321C /* PagarMe Sample */ = {
 			isa = PBXGroup;
 			children = (
-				DDE5F4D017343D4F0071321C /* PagarMeAppDelegate.h */,
-				DDE5F4D117343D4F0071321C /* PagarMeAppDelegate.m */,
-				DDE5F4D917343D4F0071321C /* PagarMeViewController.h */,
-				DDE5F4DA17343D4F0071321C /* PagarMeViewController.m */,
-				DDE5F4DC17343D4F0071321C /* PagarMeViewController.xib */,
+				DDDDD6A717387E22003B9755 /* PagarMeAppDelegate.h */,
+				DDDDD6A817387E22003B9755 /* PagarMeAppDelegate.m */,
+				DDDDD6A917387E22003B9755 /* PagarMeViewController.h */,
+				DDDDD6AA17387E22003B9755 /* PagarMeViewController.m */,
+				DDDDD6B817387EA8003B9755 /* PagarMeViewController.xib */,
 				DDE5F4C817343D4F0071321C /* Supporting Files */,
 			);
 			name = "PagarMe Sample";
@@ -146,13 +146,12 @@
 		DDE5F4C817343D4F0071321C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DDE5F4C917343D4F0071321C /* PagarMe-Info.plist */,
-				DDE5F4CA17343D4F0071321C /* InfoPlist.strings */,
-				DDE5F4CD17343D4F0071321C /* main.m */,
-				DDE5F4CF17343D4F0071321C /* PagarMe-Prefix.pch */,
-				DDE5F4D317343D4F0071321C /* Default.png */,
-				DDE5F4D517343D4F0071321C /* Default@2x.png */,
-				DDE5F4D717343D4F0071321C /* Default-568h@2x.png */,
+				DDDDD69C17387E08003B9755 /* Default-568h@2x.png */,
+				DDDDD69D17387E08003B9755 /* Default.png */,
+				DDDDD69E17387E08003B9755 /* Default@2x.png */,
+				DDDDD69F17387E08003B9755 /* main.m */,
+				DDDDD6BB17387EB8003B9755 /* PagarMe-Info.plist */,
+				DDDDD6A117387E08003B9755 /* PagarMe-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -179,12 +178,12 @@
 		DDE5F4FC1734425F0071321C /* PagarMe API */ = {
 			isa = PBXGroup;
 			children = (
-				DDE5F50517361C9E0071321C /* NSData+Base64.h */,
-				DDE5F50617361C9E0071321C /* NSData+Base64.m */,
-				DDE5F4FD173442760071321C /* PagarMe.h */,
-				DDE5F4FE173442760071321C /* PagarMe.m */,
-				DDE5F5001734456C0071321C /* PagarMeCreditCard.h */,
-				DDE5F5011734456C0071321C /* PagarMeCreditCard.m */,
+				DDDDD6AE17387E43003B9755 /* NSData+Base64.h */,
+				DDDDD6AF17387E43003B9755 /* NSData+Base64.m */,
+				DDDDD6B017387E43003B9755 /* PagarMe.h */,
+				DDDDD6B117387E43003B9755 /* PagarMe.m */,
+				DDDDD6B217387E43003B9755 /* PagarMeCreditCard.h */,
+				DDDDD6B317387E43003B9755 /* PagarMeCreditCard.m */,
 			);
 			name = "PagarMe API";
 			sourceTree = "<group>";
@@ -261,11 +260,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDE5F4CC17343D4F0071321C /* InfoPlist.strings in Resources */,
-				DDE5F4D417343D4F0071321C /* Default.png in Resources */,
-				DDE5F4D617343D4F0071321C /* Default@2x.png in Resources */,
-				DDE5F4D817343D4F0071321C /* Default-568h@2x.png in Resources */,
-				DDE5F4DE17343D4F0071321C /* PagarMeViewController.xib in Resources */,
+				DDDDD6B717387E62003B9755 /* Default-568h@2x.png in Resources */,
+				DDDDD6BA17387EA8003B9755 /* PagarMeViewController.xib in Resources */,
+				DDDDD6BC17387EB8003B9755 /* PagarMe-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +271,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDE5F4F017343D4F0071321C /* InfoPlist.strings in Resources */,
+				DDDDD6A217387E08003B9755 /* Default-568h@2x.png in Resources */,
+				DDDDD6A317387E08003B9755 /* Default.png in Resources */,
+				DDDDD6A417387E08003B9755 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,12 +300,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDE5F50817361F230071321C /* NSData+Base64.m in Sources */,
-				DDE5F4CE17343D4F0071321C /* main.m in Sources */,
-				DDE5F4D217343D4F0071321C /* PagarMeAppDelegate.m in Sources */,
-				DDE5F4DB17343D4F0071321C /* PagarMeViewController.m in Sources */,
-				DDE5F4FF173442760071321C /* PagarMe.m in Sources */,
-				DDE5F5021734456C0071321C /* PagarMeCreditCard.m in Sources */,
+				DDDDD6AD17387E34003B9755 /* main.m in Sources */,
+				DDDDD6AB17387E22003B9755 /* PagarMeAppDelegate.m in Sources */,
+				DDDDD6AC17387E22003B9755 /* PagarMeViewController.m in Sources */,
+				DDDDD6B417387E43003B9755 /* NSData+Base64.m in Sources */,
+				DDDDD6B517387E43003B9755 /* PagarMe.m in Sources */,
+				DDDDD6B617387E43003B9755 /* PagarMeCreditCard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDE5F4F317343D4F0071321C /* PagarMeTests.m in Sources */,
-				DDE5F50717361C9E0071321C /* NSData+Base64.m in Sources */,
+				DDDDD6A517387E08003B9755 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,18 +329,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DDE5F4CA17343D4F0071321C /* InfoPlist.strings */ = {
+		DDDDD6B817387EA8003B9755 /* PagarMeViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DDE5F4CB17343D4F0071321C /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		DDE5F4DC17343D4F0071321C /* PagarMeViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DDE5F4DD17343D4F0071321C /* en */,
+				DDDDD6B917387EA8003B9755 /* en */,
 			);
 			name = PagarMeViewController.xib;
 			sourceTree = "<group>";
@@ -416,8 +408,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PagarMe/PagarMe-Prefix.pch";
-				INFOPLIST_FILE = "PagarMe/PagarMe-Info.plist";
+				GCC_PREFIX_HEADER = "PagarMeSample/PagarMe-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/PagarMeSample/PagarMe-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -427,8 +419,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PagarMe/PagarMe-Prefix.pch";
-				INFOPLIST_FILE = "PagarMe/PagarMe-Info.plist";
+				GCC_PREFIX_HEADER = "PagarMeSample/PagarMe-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/PagarMeSample/PagarMe-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
