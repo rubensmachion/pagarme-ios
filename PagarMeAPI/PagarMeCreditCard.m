@@ -48,6 +48,59 @@ cardExpiracyMonth:(int)_cardExpiracyMonth cardExpiracyYear:(int)_cardExpiracyYea
 	return [parameters componentsJoinedByString:@"&"];
 }
 
+- (BOOL)isValidCardNumber:(NSString *)cardNumber {
+	NSMutableArray *stringAsChars = [[NSMutableArray alloc] initWithCapacity:[cardNumber length]];
+	for (int i=0; i < [cardNumber length]; i++) {
+		NSString *ichar  = [NSString stringWithFormat:@"%c", [cardNumber characterAtIndex:i]];
+		[stringAsChars addObject:ichar];
+	}
+ 
+	BOOL isOdd = YES;
+	int oddSum = 0;
+	int evenSum = 0;
+
+	for (int i = [cardNumber length] - 1; i >= 0; i--) {
+
+		int digit = [(NSString *)[stringAsChars objectAtIndex:i] intValue];
+
+		if (isOdd) 
+			oddSum += digit;
+		else 
+			evenSum += digit/5 + (2*digit) % 10;
+
+		isOdd = !isOdd;				 
+	}
+
+	return ((oddSum + evenSum) % 10 == 0);
+}
+
+- (NSDictionary *)fieldErrors {
+	NSMutableDictionary *fieldErrors = [[NSMutableDictionary alloc] init];
+
+	if(!self.cardNumber || self.cardNumber.length < 16 || self.cardNumber.length > 20 ||
+	![self isValidCardNumber:self.cardNumber]) {
+		[fieldErrors setObject:@"Número do cartão inválido." forKey:@"card_number"];
+	}
+
+	if(!self.cardHolderName || self.cardHolderName.length <= 0 || [self.cardHolderName intValue]) {
+		[fieldErrors setObject:@"Nome do portador inválido." forKey:@"card_holder_name"];
+	}
+
+	if(self.cardExpiracyMonth <= 0 || self.cardExpiracyMonth > 12) {
+		[fieldErrors setObject:@"Mês de expiração inválido" forKey:@"card_expiracy_month"];
+	}
+
+	if(self.cardExpiracyYear < 1 || self.cardExpiracyYear > 50) {
+		[fieldErrors setObject:@"Ano de expiração inválido" forKey:@"card_expiracy_year"];
+	}
+
+	if(self.cardCvv.length < 3 || self.cardCvv.length > 4 || ![self.cardCvv intValue]) {
+		[fieldErrors setObject:@"Código de segurança inválido." forKey:@"card_cvv"];
+	}
+
+	return fieldErrors;
+}
+
 #pragma mark NSURLConnection delegate methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

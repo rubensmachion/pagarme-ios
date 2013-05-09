@@ -30,10 +30,17 @@
 	creditCard.cardExpiracyYear = 13;
 	creditCard.cardCvv = @"315";
 
-	[creditCard generateHash:^(NSError *error, NSString *cardHash) {
-		NSLog(@"GOT CARD HASH: %@", cardHash);
-		NSLog(@"ERROR? %@", error);
-	}];
+	NSDictionary *errors = [creditCard fieldErrors];
+
+	if([errors count] != 0) {
+		NSLog(@"Foram encontrados erros validando os dados do cartão de crédito: ");
+		NSLog(@"%@", errors);
+	} else {
+		[creditCard generateHash:^(NSError *error, NSString *cardHash) {
+			NSLog(@"GOT CARD HASH: %@", cardHash);
+			NSLog(@"ERROR? %@", error);
+		}];
+	}
 }
 
 - (void)didReceiveMemoryWarning

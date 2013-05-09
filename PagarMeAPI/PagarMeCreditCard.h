@@ -15,6 +15,7 @@
 - (id)initWithCardNumber:(NSString *)_cardNumber cardHolderName:(NSString *)_cardHolderName cardExpiracyMonth:(int)_cardExpiracyMonth
 cardExpiracyYear:(int)_cardExpiracyYear cardCvv:(int)_cardCvv;
 - (void)generateHash:(void (^)(NSError *error, NSString *cardHash))block;
+- (NSDictionary *)fieldErrors;
 
 @property (retain) NSString *cardNumber;
 @property (retain) NSString *cardHolderName;
