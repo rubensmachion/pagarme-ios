@@ -21,13 +21,13 @@
 	// Do any additional setup after loading the view, typically from a nib.
 	
 	// Sets your encryption key
-	[[PagarMe sharedInstance] setEncryptionKey:@"9741a03ea3a4f15f6fa8d9fe9d2c47c8"];
+	[[PagarMe sharedInstance] setEncryptionKey:@"ek_test_Ec8KhxISQ1tug1b8bCGxC2nXfxqRmk_"];
 
 	PagarMeCreditCard *creditCard = [[PagarMeCreditCard alloc] init];
 	creditCard.cardNumber = @"4901720080344448";
 	creditCard.cardHolderName = @"Test User";
-	creditCard.cardExpiracyMonth = 12;
-	creditCard.cardExpiracyYear = 13;
+	creditCard.cardExpirationMonth = 12;
+	creditCard.cardExpirationYear = 13;
 	creditCard.cardCvv = @"315";
 
 	NSDictionary *errors = [creditCard fieldErrors];

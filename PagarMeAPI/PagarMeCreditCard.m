@@ -1,4 +1,3 @@
-//
 //  PagarMeCreditCard.m
 //  PagarMe
 //
@@ -13,14 +12,14 @@
 
 @implementation PagarMeCreditCard
 
-@synthesize cardNumber, cardHolderName, cardExpiracyMonth, cardExpiracyYear, cardCvv;
+@synthesize cardNumber, cardHolderName, cardExpirationMonth, cardExpirationYear, cardCvv;
 
 - (id)initWithCardNumber:(NSString *)_cardNumber cardHolderName:(NSString *)_cardHolderName
-cardExpiracyMonth:(int)_cardExpiracyMonth cardExpiracyYear:(int)_cardExpiracyYear cardCvv:(NSString *)_cardCvv {
+cardExpirationMonth:(int)_cardExpirationMonth cardExpirationYear:(int)_cardExpirationYear cardCvv:(NSString *)_cardCvv {
 	self.cardNumber = _cardNumber;
 	self.cardHolderName = _cardHolderName;
-	self.cardExpiracyMonth = _cardExpiracyMonth;
-	self.cardExpiracyYear = _cardExpiracyYear;
+	self.cardExpirationMonth = _cardExpirationMonth;
+	self.cardExpirationYear = _cardExpirationYear;
 	self.cardCvv = _cardCvv;
 
 	return self;
@@ -28,8 +27,7 @@ cardExpiracyMonth:(int)_cardExpiracyMonth cardExpiracyYear:(int)_cardExpiracyYea
 
 - (void)generateHash:(void (^)(NSError *error, NSString *cardHash))block {
 	self.callbackBlock = block;
-	NSString *urlString = [NSString stringWithFormat:@"%@/transactions/card_hash_key?encryption_key=%@&live=%@", API_ENDPOINT,
-		 [[PagarMe sharedInstance] encryptionKey], [[PagarMe sharedInstance] liveMode] ? @"1" : @"0"];
+	NSString *urlString = [NSString stringWithFormat:@"%@/transactions/card_hash_key?encryption_key=%@", API_ENDPOINT, [[PagarMe sharedInstance] encryptionKey]];
 	urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]; 
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
 	[request setHTTPMethod:@"GET"];
@@ -42,7 +40,7 @@ cardExpiracyMonth:(int)_cardExpiracyMonth cardExpiracyYear:(int)_cardExpiracyYea
 
 	[parameters addObject:[NSString stringWithFormat:@"card_number=%@", self.cardNumber]];
 	[parameters addObject:[NSString stringWithFormat:@"card_holder_name=%@", self.cardHolderName]];
-	[parameters addObject:[NSString stringWithFormat:@"card_expiracy_date=%02i%02i", self.cardExpiracyMonth, self.cardExpiracyYear]];
+	[parameters addObject:[NSString stringWithFormat:@"card_expiration_date=%02i%02i", self.cardExpirationMonth, self.cardExpirationYear]];
 	[parameters addObject:[NSString stringWithFormat:@"card_cvv=%@", self.cardCvv]];
 
 	return [parameters componentsJoinedByString:@"&"];
@@ -86,12 +84,12 @@ cardExpiracyMonth:(int)_cardExpiracyMonth cardExpiracyYear:(int)_cardExpiracyYea
 		[fieldErrors setObject:@"Nome do portador inválido." forKey:@"card_holder_name"];
 	}
 
-	if(self.cardExpiracyMonth <= 0 || self.cardExpiracyMonth > 12) {
-		[fieldErrors setObject:@"Mês de expiração inválido" forKey:@"card_expiracy_month"];
+	if(self.cardExpirationMonth <= 0 || self.cardExpirationMonth > 12) {
+		[fieldErrors setObject:@"Mês de expiração inválido" forKey:@"card_expiration_month"];
 	}
 
-	if(self.cardExpiracyYear < 1 || self.cardExpiracyYear > 50) {
-		[fieldErrors setObject:@"Ano de expiração inválido" forKey:@"card_expiracy_year"];
+	if(self.cardExpirationYear < 1 || self.cardExpirationYear > 50) {
+		[fieldErrors setObject:@"Ano de expiração inválido" forKey:@"card_expiration_year"];
 	}
 
 	if(self.cardCvv.length < 3 || self.cardCvv.length > 4 || ![self.cardCvv intValue]) {
@@ -120,8 +118,13 @@ cardExpiracyMonth:(int)_cardExpiracyMonth cardExpiracyYear:(int)_cardExpiracyYea
 	NSError *error = nil;
 	id responseObject = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
 
+	NSLog(@"responseobject: %@", responseObject);
+
 	if(error) {
 		self.callbackBlock(error, nil);
+		return;
+	} else if([responseObject objectForKey:@"errors"]) {
+		self.callbackBlock([NSError errorWithDomain:@"Erro de resposta" code:0 userInfo:[[responseObject objectForKey:@"errors"] objectAtIndex:0]], nil);
 		return;
 	}
 
@@ -256,18 +259,6 @@ cardExpiracyMonth:(int)_cardExpiracyMonth cardExpiracyYear:(int)_cardExpiracyYea
 	free(plainText);
 
 	return [finalData base64EncodedStringWithSeparateLines:NO];
-}
-
-@end
-
-
-// TODO: remove in production!
-// This trusts any HTTPS certificate
-// for test purposes only!
-@implementation NSURLRequest(AllowAllCerts)
-
-+ (BOOL) allowsAnyHTTPSCertificateForHost:(NSString *) host {
-    return YES;
 }
 
 @end
