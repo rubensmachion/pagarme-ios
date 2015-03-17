@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author       = "Luciano Nascimento"
   s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/pagarme/pagarme-ios.git", :tag => s.version }
-  s.source_files = "PagarMe/*"
+  s.source_files = "PagarMe/**/*.{h,m}"
   s.framework    = "Security"
   s.requires_arc = true
 
