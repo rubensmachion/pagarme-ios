@@ -1,0 +1,16 @@
+Pod::Spec.new do |s|
+  s.name         = "PagarMe"
+  s.version      = "1.1.0"
+  s.summary      = "Pagar.me Library for iOS"
+  s.homepage     = "https://github.com/pagarme/pagarme-ios"
+  s.license      = "MIT"
+  s.author       = "Luciano Nascimento"
+  s.platform     = :ios, "7.0"
+  s.source       = { :git => "https://github.com/pagarme/pagarme-ios.git", :tag => s.version }
+  s.source_files = "PagarMe/*"
+  s.framework    = "Security"
+  s.requires_arc = true
+
+  s.dependency "AFNetworking"
+  s.dependency "ObjectiveLuhn"
+end

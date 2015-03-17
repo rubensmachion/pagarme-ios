@@ -1,4 +1,4 @@
 pagarme-ios
 ===========
 
-PagarMe's iOS API
+Pagar.me Library for iOS
