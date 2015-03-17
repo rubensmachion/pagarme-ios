@@ -6,10 +6,12 @@
 ### How To
 
 ##### Add to `AppDelegate.m` - `didFinishLaunchingWithOptions`
+```objc
     [PagarMe sharedInstance].encryptionKey = @"Your_PagarMe_EncryptionKey";
+```
     
 ##### Usage
-
+```objc
     PagarMeCreditCard *pagarMeCreditCard = [[PagarMeCreditCard alloc] initWithCardNumber:_tfCardNumber.text cardHolderName:_tfCardHolderName.text cardExpirationMonth:_cardExpirationMonth cardExpirationYear:_cardExpirationYear cardCvv:_tfCardCVC.text];
 
     if ([pagarMeCreditCard hasErrorCardNumber]) {
@@ -37,3 +39,4 @@
             NSLog(@"CardHash Generated: %@", cardHash);
         }];
     }
+```
