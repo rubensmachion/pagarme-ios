@@ -12,7 +12,7 @@
     
 ##### Usage
 ```objc
-    PagarMeCreditCard *pagarMeCreditCard = [[PagarMeCreditCard alloc] initWithCardNumber:_tfCardNumber.text cardHolderName:_tfCardHolderName.text cardExpirationMonth:_cardExpirationMonth cardExpirationYear:_cardExpirationYear cardCvv:_tfCardCVC.text];
+    PagarMeCreditCard *pagarMeCreditCard = [[PagarMeCreditCard alloc] initWithCardNumber:@"4111111111111111" cardHolderName:@"Test Card" cardExpirationMonth:@"10" cardExpirationYear:@"20" cardCvv:@"123"];
 
     if ([pagarMeCreditCard hasErrorCardNumber]) {
         // Error with CardNumber
