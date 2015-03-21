@@ -10,8 +10,6 @@
 
 @implementation PagarMe
 
-@synthesize encryptionKey;
-
 static PagarMe *sharedInstance = nil;
 
 + (PagarMe *)sharedInstance {
@@ -19,7 +17,6 @@ static PagarMe *sharedInstance = nil;
         return sharedInstance;
     }
  
-	// Thread safe singleton...
     static dispatch_once_t pred;
     dispatch_once(&pred, ^{
         sharedInstance = [[PagarMe alloc] init];
