@@ -40,3 +40,10 @@ else {
     }];
 }
 ```
+
+## Support
+If you have any problem or suggestion please open an issue [here](https://github.com/pagarme/pagarme-ios/issues).
+
+## License
+
+Check [here](LICENSE).
