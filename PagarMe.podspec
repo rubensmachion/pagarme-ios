@@ -13,4 +13,5 @@ Pod::Spec.new do |s|
 
   s.dependency 'AFNetworking', '~> 4.0'
   s.dependency 'ObjectiveLuhn', '~> 1.0'
+
 end
