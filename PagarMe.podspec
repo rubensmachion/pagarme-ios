@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'PagarMe'
-  s.version      = '1.1.1'
+  s.version      = '1.1.2'
   s.summary      = 'Pagar.me Library for iOS'
   s.homepage     = 'https://github.com/pagarme/pagarme-ios'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
