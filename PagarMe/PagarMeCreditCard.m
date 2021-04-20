@@ -74,9 +74,13 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[[PagarMe sharedInstance] encryptionKey] forKey:@"encryption_key"];
     
+    NSMutableDictionary *headers = [NSMutableDictionary dictionary];
+    [headers setObject:@"application/json" forKey:@"Content-Type"];
+    
+    
     [manager GET:url
        parameters:parameters
-          headers:nil
+          headers:headers
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
